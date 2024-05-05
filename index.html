@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nirmala News</title>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Rafi Rizqallah Andila" />
+    <meta name="description" content="A Wikipedia viewer project as part of a FreeCodeCamp track." />
+    <meta name="keywords" content="wikipedia, wiki, viewer, api" />
+
+    <!-- JavaScripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular-animate.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <!-- HUD -->
+    <table class="hud">
+      <tr>
+        <td>
+          <button class="ui-btn homepage-btn" id="homepage-btn"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> homepage</button>
+          <button class="ui-btn" id="random-article-btn"><i class="fa fa-random" aria-hidden="true"></i> random article</button>
+        </td>
+
+        <td></td>
+      </tr>
+    </table>
+
+    <!-- Container -->
+    <div class="container col-md-12 col-sm-12 col-xs-12" id="container">
+      <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
+          <!-- Title & Subtitle -->
+          <h1 class="wikipedia-logo"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></h1>
+          <h2 class="app-title">Nirmala News<br /></h2>
+          <!-- Search -->
+          <main ng-app="wikipediaViewer" ng-controller="SearchCtrl">
+            <div id="search">
+              <form ng-submit="search()">
+                <input type="text" class="search-input" placeholder="your search here" />
+                <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i> search</button>
+              </form>
+            </div>
+            <div class="wrapper">
+              <ul>
+                <a ng-href="{{result.page}}" target="_blank" ng-repeat="result in results">
+                  <li>
+                    <!-- Results to be interpolated -->
+                    <h1>{{result.title}}</h1>
+                    <p>{{result.body}}</p>
+                  </li>
+                </a>
+              </ul>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
